@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
@@ -27,31 +27,25 @@ namespace Drawing_Mistakes_Detection
             // Initiate an image-picking on click
             pickPictureButton.Clicked += async (sender, e) =>
             {
-                pickPictureButton.IsEnabled = false;
-                Stream stream = await DependencyService.Get<IImagePicker>().GetImageStreamAsync();
+                // Clear the content for new image
+                stack.Children.Clear();
 
+                Stream stream = await DependencyService.Get<IImagePicker>().GetImageStreamAsync();
                 if (stream != null)
                 {
+                    // Show the selected image
                     Image image = new Image
                     {
                         Source = ImageSource.FromStream(() => stream),
                         BackgroundColor = Color.Gray
                     };
-
-                    TapGestureRecognizer recognizer = new TapGestureRecognizer();
-                    recognizer.Tapped += (sender2, args) =>
-                    {
-                        (MainPage as ContentPage).Content = stack;
-                        pickPictureButton.IsEnabled = true;
-                    };
-                    image.GestureRecognizers.Add(recognizer);
-
-                    (MainPage as ContentPage).Content = image;
+                    stack.Children.Add(image);
+                    // Request the image analysis 
+                    
                 }
-                else
-                {
-                    pickPictureButton.IsEnabled = true;
-                }
+
+                // Add the button to the content stack, so can select other image
+                stack.Children.Add(pickPictureButton);
             };
         }
 
@@ -68,6 +62,43 @@ namespace Drawing_Mistakes_Detection
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        /// <summary>
+        /// Returns a byte array gotten from a Stream.
+        /// </summary>
+        /// <param name="s"> The Stream to be turned into a byte array.</param>
+        /// <returns>The byte array gotten from a Stream</returns>
+        static byte[] StreamToArray(Stream s)
+        {
+            MemoryStream ms = new MemoryStream();
+            s.CopyTo(ms);
+            return ms.ToArray();
+        }
+
+        /// <summary>
+        /// Makes a request to the Custom Vision Service API for predicting tags of an image.
+        /// </summary>
+        /// <param name="imageStream">The source Stream of the image.</param>
+        /// <returns>The map of predictions, if successful, or null otherwise.</returns>
+        static async Task<string> MakePredictionRequest(Stream imageStream)
+        {
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Add("Prediction-Key", );
+
+            string url = ;
+
+            HttpResponseMessage response;
+
+            // Request body
+            byte[] imageByteArray = StreamToArray(imageStream);
+
+            using (var content = new ByteArrayContent(imageByteArray))
+            {
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                response = await client.PostAsync(url, content);
+                return await response.Content.ReadAsStringAsync();
+            }
         }
     }
 }
