@@ -30,18 +30,22 @@ namespace Drawing_Mistakes_Detection
                 // Clear the content for new image
                 stack.Children.Clear();
 
-                Stream stream = await DependencyService.Get<IImagePicker>().GetImageStreamAsync();
-                if (stream != null)
+                Stream imageStream = await DependencyService.Get<IImagePicker>().GetImageStreamAsync();
+                if (imageStream != null)
                 {
                     // Show the selected image
                     Image image = new Image
                     {
-                        Source = ImageSource.FromStream(() => stream),
+                        Source = ImageSource.FromStream(() => imageStream),
                         BackgroundColor = Color.Gray
                     };
                     stack.Children.Add(image);
                     // Request the image analysis 
-                    
+                    String prediction = await MakePredictionRequest(imageStream);
+                    var predictionLabel = new Label();
+                    predictionLabel.Text = prediction;
+                    stack.Children.Add(predictionLabel);
+
                 }
 
                 // Add the button to the content stack, so can select other image
@@ -84,9 +88,9 @@ namespace Drawing_Mistakes_Detection
         static async Task<string> MakePredictionRequest(Stream imageStream)
         {
             var client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Prediction-Key", );
+            client.DefaultRequestHeaders.Add("Prediction-Key", "");
 
-            string url = ;
+            string url = "";
 
             HttpResponseMessage response;
 
