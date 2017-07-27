@@ -15,22 +15,14 @@ namespace Drawing_Mistakes_Detection
             // Orginising the layout:
             // MainPage -> ScrollView view -> StackLayout stack.
             var stack = new StackLayout();
-            var view = new ScrollView
-            {
-                Content = stack
-            };
-            MainPage = new ContentPage
-            {
-                Content = view
-            };
+            var view = new ScrollView{ Content = stack };
+            MainPage = new ContentPage{ Content = view };
 
             // Create a button for picking a drawing.
-            Button pickPictureButton = new Button
-            {
+            Button pickPictureButton = new Button{
                 Text = "Pick Drawing",
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                HorizontalOptions = LayoutOptions.CenterAndExpand
-            };
+                HorizontalOptions = LayoutOptions.CenterAndExpand };
             stack.Children.Add(pickPictureButton);
             // Initiate an image-picking on click.
             pickPictureButton.Clicked += async (sender, e) =>
@@ -43,11 +35,9 @@ namespace Drawing_Mistakes_Detection
                 if (imageStream != null)
                 {
                     // Show the selected image.
-                    Image image = new Image
-                    {
+                    Image image = new Image{
                         Source = ImageSource.FromStream(() => imageStream),
-                        BackgroundColor = Color.Gray
-                    };
+                        BackgroundColor = Color.Gray };
                     stack.Children.Add(image);
                     // Request the image analysis. 
                     
@@ -86,6 +76,8 @@ namespace Drawing_Mistakes_Detection
         {
             MemoryStream ms = new MemoryStream();
             s.CopyTo(ms);
+            // Reset stream.
+            s.Position = 0;
             return ms.ToArray();
         }
 
