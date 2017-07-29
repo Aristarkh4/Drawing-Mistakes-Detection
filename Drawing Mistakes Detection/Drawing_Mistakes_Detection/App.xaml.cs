@@ -3,8 +3,11 @@ using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+// TODO Remove after debug.
+using System.Diagnostics;
 
 using Xamarin.Forms;
+using Newtonsoft.Json;
 
 namespace Drawing_Mistakes_Detection
 {
@@ -19,10 +22,12 @@ namespace Drawing_Mistakes_Detection
             MainPage = new ContentPage{ Content = view };
 
             // Create a button for picking a drawing.
-            Button pickPictureButton = new Button{
+            Button pickPictureButton = new Button
+            {
                 Text = "Pick Drawing",
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                HorizontalOptions = LayoutOptions.CenterAndExpand };
+                HorizontalOptions = LayoutOptions.CenterAndExpand
+            };
             stack.Children.Add(pickPictureButton);
             // Initiate an image-picking on click.
             pickPictureButton.Clicked += async (sender, e) =>
@@ -40,10 +45,19 @@ namespace Drawing_Mistakes_Detection
                         BackgroundColor = Color.Gray };
                     stack.Children.Add(image);
                     // Request the image analysis. 
-                    
-                    String prediction = await MakePredictionRequest(imageStream);
-                    var predictionLabel = new Label();
-                    predictionLabel.Text = prediction;
+                    String predictionJSON = await MakePredictionRequest(imageStream);
+                    PredictionResult predictionResult = JsonConvert.DeserializeObject<PredictionResult>(predictionJSON);
+                    // Put the most probable tags on label and add it to the page
+                    string[] bestPredictionTags = predictionResult.GetBestPredictions();
+                    var predictionLabel = new Label { Text = "Unclear" };
+                    if(bestPredictionTags.Length != 0)
+                    {
+                        predictionLabel.Text = "";
+                        foreach(string tag in bestPredictionTags)
+                        {
+                            predictionLabel.Text += "\n" + tag;
+                        }
+                    }
                     stack.Children.Add(predictionLabel);
                 }
 
@@ -87,7 +101,7 @@ namespace Drawing_Mistakes_Detection
         /// <param name="imageStream">The source Stream of the image.</param>
         /// <returns>The JSON map of predictions, if successful, or null otherwise.</returns>
         private static async Task<string> MakePredictionRequest(Stream imageStream)
-        {
+        {   
             byte[] imageByteArray = StreamToArray(imageStream);
 
             var client = new HttpClient();
