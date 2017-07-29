@@ -46,19 +46,26 @@ namespace Drawing_Mistakes_Detection
                     stack.Children.Add(image);
                     // Request the image analysis. 
                     String predictionJSON = await MakePredictionRequest(imageStream);
-                    PredictionResult predictionResult = JsonConvert.DeserializeObject<PredictionResult>(predictionJSON);
-                    // Put the most probable tags on label and add it to the page
-                    string[] bestPredictionTags = predictionResult.GetBestPredictions();
-                    var predictionLabel = new Label { Text = "Unclear" };
-                    if(bestPredictionTags.Length != 0)
+                    if(predictionJSON == null)
                     {
-                        predictionLabel.Text = "";
-                        foreach(string tag in bestPredictionTags)
+                        var errorLabel = new Label { Text = "Error sending a request. Please check your connection." };
+                        stack.Children.Add(errorLabel);
+                    } else
+                    {
+                        PredictionResult predictionResult = JsonConvert.DeserializeObject<PredictionResult>(predictionJSON);
+                        // Put the most probable tags on label and add it to the page
+                        string[] bestPredictionTags = predictionResult.GetBestPredictions();
+                        var predictionLabel = new Label { Text = "Unclear" };
+                        if (bestPredictionTags.Length != 0)
                         {
-                            predictionLabel.Text += "\n" + tag;
+                            predictionLabel.Text = "";
+                            foreach (string tag in bestPredictionTags)
+                            {
+                                predictionLabel.Text += "\n" + tag;
+                            }
                         }
-                    }
-                    stack.Children.Add(predictionLabel);
+                        stack.Children.Add(predictionLabel);
+                    }    
                 }
 
                 // Add the button to the content stack, so can select other image.
@@ -101,21 +108,28 @@ namespace Drawing_Mistakes_Detection
         /// <param name="imageStream">The source Stream of the image.</param>
         /// <returns>The JSON map of predictions, if successful, or null otherwise.</returns>
         private static async Task<string> MakePredictionRequest(Stream imageStream)
-        {   
-            byte[] imageByteArray = StreamToArray(imageStream);
-
-            var client = new HttpClient();
-            // APIKeys is a static class static string field for prediction key
-            // and static string field for prediction url.
-            client.DefaultRequestHeaders.Add("Prediction-Key", APIKeys.PredictionKey); 
-            string url = APIKeys.PredictionURL;                                        
-
-            HttpResponseMessage response;
-            using (var content = new ByteArrayContent(imageByteArray))
+        {
+            try
             {
-                content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-                response = await client.PostAsync(url, content);
-                return await response.Content.ReadAsStringAsync();
+                byte[] imageByteArray = StreamToArray(imageStream);
+
+                var client = new HttpClient();
+                // APIKeys is a static class static string field for prediction key
+                // and static string field for prediction url.
+                client.DefaultRequestHeaders.Add("Prediction-Key", APIKeys.PredictionKey);
+                string url = APIKeys.PredictionURL;
+
+                HttpResponseMessage response;
+                using (var content = new ByteArrayContent(imageByteArray))
+                {
+                    content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                    response = await client.PostAsync(url, content);
+                    return await response.Content.ReadAsStringAsync();
+                }
+            }
+            catch (HttpRequestException e)
+            {
+                return null;
             }
         }
     }
