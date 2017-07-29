@@ -234,7 +234,7 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 0x7f0100c2
 			public const int arrowShaftLength = 2130772162;
-			
+
 			// aapt resource value: 0x7f0100ab
 			public const int autoCompleteTextViewStyle = 2130772139;
 			
@@ -462,12 +462,14 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 0x7f01007f
 			public const int dividerHorizontal = 2130772095;
+
 			
 			// aapt resource value: 0x7f0100c7
 			public const int dividerPadding = 2130772167;
-			
+
 			// aapt resource value: 0x7f01007e
 			public const int dividerVertical = 2130772094;
+
 			
 			// aapt resource value: 0x7f0100bf
 			public const int drawableSize = 2130772159;
@@ -609,7 +611,7 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 0x7f010000
 			public const int layoutManager = 2130771968;
-			
+      
 			// aapt resource value: 0x7f01011c
 			public const int layout_anchor = 2130772252;
 			
@@ -684,7 +686,7 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 0x7f0100f2
 			public const int maxButtonHeight = 2130772210;
-			
+
 			// aapt resource value: 0x7f0100c5
 			public const int measureWithLargestChild = 2130772165;
 			
@@ -846,7 +848,7 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 0x7f01007c
 			public const int selectableItemBackgroundBorderless = 2130772092;
-			
+
 			// aapt resource value: 0x7f0100c8
 			public const int showAsAction = 2130772168;
 			
@@ -1014,7 +1016,7 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 0x7f0100fd
 			public const int theme = 2130772221;
-			
+
 			// aapt resource value: 0x7f0100c4
 			public const int thickness = 2130772164;
 			
@@ -1122,7 +1124,7 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 0x7f010049
 			public const int windowNoTitle = 2130772041;
-			
+
 			static Attribute()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -1136,20 +1138,29 @@ namespace Drawing_Mistakes_Detection.Droid
 		public partial class Boolean
 		{
 			
-			// aapt resource value: 0x7f0d0000
-			public const int abc_action_bar_embed_tabs = 2131558400;
+			// aapt resource value: 0x7f0c0003
+			public const int abc_action_bar_embed_tabs = 2131492867;
 			
-			// aapt resource value: 0x7f0d0001
-			public const int abc_allow_stacked_button_bar = 2131558401;
+			// aapt resource value: 0x7f0c0001
+			public const int abc_action_bar_embed_tabs_pre_jb = 2131492865;
 			
-			// aapt resource value: 0x7f0d0002
-			public const int abc_config_actionMenuItemAllCaps = 2131558402;
+			// aapt resource value: 0x7f0c0004
+			public const int abc_action_bar_expanded_action_views_exclusive = 2131492868;
 			
-			// aapt resource value: 0x7f0d0003
-			public const int abc_config_closeDialogWhenTouchOutside = 2131558403;
+			// aapt resource value: 0x7f0c0000
+			public const int abc_allow_stacked_button_bar = 2131492864;
 			
-			// aapt resource value: 0x7f0d0004
-			public const int abc_config_showMenuShortcutsWhenKeyboardPresent = 2131558404;
+			// aapt resource value: 0x7f0c0005
+			public const int abc_config_actionMenuItemAllCaps = 2131492869;
+			
+			// aapt resource value: 0x7f0c0002
+			public const int abc_config_allowActionMenuItemTextWithIcon = 2131492866;
+			
+			// aapt resource value: 0x7f0c0006
+			public const int abc_config_closeDialogWhenTouchOutside = 2131492870;
+			
+			// aapt resource value: 0x7f0c0007
+			public const int abc_config_showMenuShortcutsWhenKeyboardPresent = 2131492871;
 			
 			static Boolean()
 			{
@@ -1460,7 +1471,7 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 0x7f0c003e
 			public const int switch_thumb_normal_material_light = 2131492926;
-			
+
 			static Color()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -2044,7 +2055,7 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 0x7f020025
 			public const int abc_ic_voice_search_api_material = 2130837541;
-			
+
 			// aapt resource value: 0x7f020026
 			public const int abc_item_background_holo_dark = 2130837542;
 			
@@ -2095,7 +2106,7 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 0x7f020036
 			public const int abc_ratingbar_material = 2130837558;
-			
+      
 			// aapt resource value: 0x7f020037
 			public const int abc_ratingbar_small_material = 2130837559;
 			
@@ -2740,7 +2751,7 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 0x7f02010b
 			public const int notify_panel_notification_icon_bg = 2130837771;
-			
+
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -2753,7 +2764,6 @@ namespace Drawing_Mistakes_Detection.Droid
 		
 		public partial class Id
 		{
-			
 			// aapt resource value: 0x7f08009c
 			public const int action0 = 2131230876;
 			
@@ -3306,7 +3316,6 @@ namespace Drawing_Mistakes_Detection.Droid
 		
 		public partial class Integer
 		{
-			
 			// aapt resource value: 0x7f0a0003
 			public const int abc_config_activityDefaultDur = 2131361795;
 			
@@ -3342,7 +3351,7 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 0x7f0a0006
 			public const int status_bar_notification_info_maxnum = 2131361798;
-			
+
 			static Integer()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -3355,7 +3364,6 @@ namespace Drawing_Mistakes_Detection.Droid
 		
 		public partial class Interpolator
 		{
-			
 			// aapt resource value: 0x7f060000
 			public const int mr_fast_out_slow_in = 2131099648;
 			
@@ -3578,7 +3586,7 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 0x7f030043
 			public const int Toolbar = 2130903107;
-			
+
 			static Layout()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -3591,7 +3599,6 @@ namespace Drawing_Mistakes_Detection.Droid
 		
 		public partial class String
 		{
-			
 			// aapt resource value: 0x7f090015
 			public const int abc_action_bar_home_description = 2131296277;
 			
@@ -3777,7 +3784,7 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 0x7f090029
 			public const int status_bar_notification_info_overflow = 2131296297;
-			
+                    
 			static String()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -3790,7 +3797,6 @@ namespace Drawing_Mistakes_Detection.Droid
 		
 		public partial class Style
 		{
-			
 			// aapt resource value: 0x7f0b00ae
 			public const int AlertDialog_AppCompat = 2131427502;
 			
@@ -5021,7 +5027,15 @@ namespace Drawing_Mistakes_Detection.Droid
 					2130772023,
 					2130772024,
 					2130772025,
-					2130772087};
+					2130772026,
+					2130772027,
+					2130772028,
+					2130772029,
+					2130772030,
+					2130772031,
+					2130772032,
+					2130772033,
+					2130772090};
 			
 			// aapt resource value: 10
 			public const int ActionBar_background = 10;
@@ -5034,10 +5048,10 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 21
 			public const int ActionBar_contentInsetEnd = 21;
-			
+
 			// aapt resource value: 25
 			public const int ActionBar_contentInsetEndWithActions = 25;
-			
+
 			// aapt resource value: 22
 			public const int ActionBar_contentInsetLeft = 22;
 			
@@ -5067,7 +5081,7 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 19
 			public const int ActionBar_hideOnContentScroll = 19;
-			
+
 			// aapt resource value: 28
 			public const int ActionBar_homeAsUpIndicator = 28;
 			
@@ -5088,7 +5102,7 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 2
 			public const int ActionBar_navigationMode = 2;
-			
+
 			// aapt resource value: 27
 			public const int ActionBar_popupTheme = 27;
 			
@@ -5130,7 +5144,13 @@ namespace Drawing_Mistakes_Detection.Droid
 					2130772004,
 					2130772008,
 					2130772010,
-					2130772026};
+					2130772026,
+					2130772007,
+					2130772013,
+					2130772014,
+					2130772018,
+					2130772020,
+					2130772034};
 			
 			// aapt resource value: 3
 			public const int ActionMode_background = 3;
@@ -5152,7 +5172,9 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			public static int[] ActivityChooserView = new int[] {
 					2130772027,
-					2130772028};
+					2130772028,
+					2130772035,
+					2130772036};
 			
 			// aapt resource value: 1
 			public const int ActivityChooserView_expandActivityOverflowButtonDrawable = 1;
@@ -5167,8 +5189,13 @@ namespace Drawing_Mistakes_Detection.Droid
 					2130772031,
 					2130772032,
 					2130772033,
-					2130772034};
-			
+					2130772034,
+					2130772037,
+					2130772038,
+					2130772039,
+					2130772040,
+					2130772041};
+          
 			// aapt resource value: 0
 			public const int AlertDialog_android_layout = 0;
 			
@@ -5193,7 +5220,9 @@ namespace Drawing_Mistakes_Detection.Droid
 			public static int[] AppBarLayout = new int[] {
 					16842964,
 					2130772024,
-					2130772224};
+					2130772224,
+					2130772032,
+					2130772215};
 			
 			// aapt resource value: 0
 			public const int AppBarLayout_android_background = 0;
@@ -5407,7 +5436,8 @@ namespace Drawing_Mistakes_Detection.Droid
 					2130772149,
 					2130772150,
 					2130772151,
-					2130772152};
+					2130772152,
+					2130772153};
 			
 			// aapt resource value: 23
 			public const int AppCompatTheme_actionBarDivider = 23;
@@ -5690,10 +5720,10 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 113
 			public const int AppCompatTheme_switchStyle = 113;
-			
+
 			// aapt resource value: 40
 			public const int AppCompatTheme_textAppearanceLargePopupMenu = 40;
-			
+      
 			// aapt resource value: 77
 			public const int AppCompatTheme_textAppearanceListItem = 77;
 			
@@ -5708,7 +5738,7 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 66
 			public const int AppCompatTheme_textAppearanceSearchResultTitle = 66;
-			
+
 			// aapt resource value: 41
 			public const int AppCompatTheme_textAppearanceSmallPopupMenu = 41;
 			
@@ -5723,7 +5753,7 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 59
 			public const int AppCompatTheme_toolbarStyle = 59;
-			
+
 			// aapt resource value: 2
 			public const int AppCompatTheme_windowActionBar = 2;
 			
@@ -5849,7 +5879,7 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 11
 			public const int CardView_contentPaddingTop = 11;
-			
+
 			public static int[] CollapsingToolbarLayout = new int[] {
 					2130771999,
 					2130772232,
@@ -5870,7 +5900,7 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 13
 			public const int CollapsingToolbarLayout_collapsedTitleGravity = 13;
-			
+
 			// aapt resource value: 7
 			public const int CollapsingToolbarLayout_collapsedTitleTextAppearance = 7;
 			
@@ -5897,25 +5927,25 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 6
 			public const int CollapsingToolbarLayout_expandedTitleTextAppearance = 6;
-			
+
 			// aapt resource value: 12
 			public const int CollapsingToolbarLayout_scrimAnimationDuration = 12;
 			
 			// aapt resource value: 11
 			public const int CollapsingToolbarLayout_scrimVisibleHeightTrigger = 11;
-			
+
 			// aapt resource value: 9
 			public const int CollapsingToolbarLayout_statusBarScrim = 9;
 			
 			// aapt resource value: 0
 			public const int CollapsingToolbarLayout_title = 0;
-			
+
 			// aapt resource value: 15
 			public const int CollapsingToolbarLayout_titleEnabled = 15;
 			
 			// aapt resource value: 10
 			public const int CollapsingToolbarLayout_toolbarId = 10;
-			
+
 			public static int[] CollapsingToolbarLayout_Layout = new int[] {
 					2130772247,
 					2130772248};
@@ -5939,7 +5969,7 @@ namespace Drawing_Mistakes_Detection.Droid
 			
 			// aapt resource value: 0
 			public const int ColorStateListItem_android_color = 0;
-			
+
 			public static int[] CompoundButton = new int[] {
 					16843015,
 					2130772155,
@@ -5955,6 +5985,7 @@ namespace Drawing_Mistakes_Detection.Droid
 			public const int CompoundButton_buttonTintMode = 2;
 			
 			public static int[] CoordinatorLayout = new int[] {
+
 					2130772249,
 					2130772250};
 			
@@ -5998,7 +6029,7 @@ namespace Drawing_Mistakes_Detection.Droid
 					2130772257,
 					2130772258,
 					2130772259};
-			
+
 			// aapt resource value: 0
 			public const int DesignTheme_bottomSheetDialogTheme = 0;
 			
