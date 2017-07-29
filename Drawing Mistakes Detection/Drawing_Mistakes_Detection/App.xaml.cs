@@ -48,14 +48,15 @@ namespace Drawing_Mistakes_Detection
                     String predictionJSON = await MakePredictionRequest(imageStream);
                     if(predictionJSON == null)
                     {
-                        var errorLabel = new Label { Text = "Error sending a request. Please check your connection." };
+                        var errorLabel = new Label { Text = "Error sending a request. Please check your connection.",
+                                                     HorizontalTextAlignment = TextAlignment.Center};
                         stack.Children.Add(errorLabel);
                     } else
                     {
                         PredictionResult predictionResult = JsonConvert.DeserializeObject<PredictionResult>(predictionJSON);
                         // Put the most probable tags on label and add it to the page
                         string[] bestPredictionTags = predictionResult.GetBestPredictions();
-                        var predictionLabel = new Label { Text = "Unclear" };
+                        var predictionLabel = new Label { Text = "Unclear" , HorizontalTextAlignment = TextAlignment.Center };
                         if (bestPredictionTags.Length != 0)
                         {
                             predictionLabel.Text = "";
