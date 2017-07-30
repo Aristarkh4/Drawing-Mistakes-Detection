@@ -36,6 +36,45 @@ namespace Drawing_Mistakes_Detection
                 HorizontalOptions = LayoutOptions.CenterAndExpand
             };
             stack.Children.Add(pickPictureButton);
+
+            //Create a button for accessing past tags for images
+            Button showHistoryButton = new Button
+            {
+                Text = "Show History",
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.CenterAndExpand
+            };
+            stack.Children.Add(showHistoryButton);
+
+            // Initialize showing history on button
+            showHistoryButton.Clicked += async (sender, e) =>
+            {
+                // Clear the content for history.
+                stack.Children.Clear();
+
+                var pastTags = await dataService.GetDrawingsWithTags();
+                var historyLabel = new Label { Text = "Empty", HorizontalTextAlignment = TextAlignment.Center };
+                
+                
+                if ((pastTags != null && pastTags.GetEnumerator().Current != null))
+                {
+                    historyLabel.Text = "";
+                    foreach (DrawingWithTag drawingTag in pastTags)
+                    {
+                        if (TagIdToTagName.ContainsKey(drawingTag.TagId))
+                        {
+                            string tag = TagIdToTagName[drawingTag.TagId];
+                            historyLabel.Text += "\n" + tag;
+                        }
+                    }
+                }
+                stack.Children.Add(historyLabel);
+
+                // Add the button to the content stack, so can select other image.
+                stack.Children.Add(pickPictureButton);
+                stack.Children.Add(showHistoryButton);
+            };
+
             // Initiate an image-picking on click.
             pickPictureButton.Clicked += async (sender, e) =>
             {
@@ -100,16 +139,8 @@ namespace Drawing_Mistakes_Detection
 
                 // Add the button to the content stack, so can select other image.
                 stack.Children.Add(pickPictureButton);
+                stack.Children.Add(showHistoryButton);
             };
-
-            //Create a button for accessing past tags for images
-            Button showHistoryButton = new Button
-            {
-                Text = "Show History",
-                VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.CenterAndExpand
-            };
-            stack.Children.Add(showHistoryButton);
         }
 
         protected override void OnStart()

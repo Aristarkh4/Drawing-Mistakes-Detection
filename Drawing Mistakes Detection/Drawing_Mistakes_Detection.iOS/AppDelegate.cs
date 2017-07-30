@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using Drawing_Mistakes_Detection;
 
 namespace Drawing_Mistakes_Detection.iOS
 {
@@ -24,7 +25,7 @@ namespace Drawing_Mistakes_Detection.iOS
         {
 
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
-            SQLitePCL.CurrentPlatform.Init();
+            SQLitePCL.Batteries.Init();
 
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());

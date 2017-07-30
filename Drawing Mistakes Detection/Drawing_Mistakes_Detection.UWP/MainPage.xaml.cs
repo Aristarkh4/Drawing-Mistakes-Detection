@@ -20,7 +20,7 @@ namespace Drawing_Mistakes_Detection.UWP
         public MainPage()
         {
             this.InitializeComponent();
-
+            SQLitePCL.Batteries.Init();
             LoadApplication(new Drawing_Mistakes_Detection.App());
         }
     }

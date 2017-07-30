@@ -4,6 +4,7 @@ using Microsoft.WindowsAzure.MobileServices.Sync;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,8 @@ namespace Drawing_Mistakes_Detection
 
             //Get sync table that will call out to azure
             drawingswithtagsTable = MobileService.GetSyncTable<DrawingWithTag>();
+
+            Debug.WriteLine("finishedinitialization");
         }
 
         public async Task<IEnumerable> GetDrawingsWithTags()
