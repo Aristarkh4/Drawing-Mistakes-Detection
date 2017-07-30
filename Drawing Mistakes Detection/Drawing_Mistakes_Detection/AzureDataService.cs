@@ -13,13 +13,12 @@ namespace Drawing_Mistakes_Detection
 {
     class AzureDataService
     {
-        public MobileServiceClient MobileService { get; set; }
+        public MobileServiceClient MobileService = new MobileServiceClient("http://drawingmistakesdetection.azurewebsites.net");
         IMobileServiceSyncTable<DrawingWithTag> drawingswithtagsTable;
 
         public async Task Initialize()
         {
-            //Create client
-            MobileService = new MobileServiceClient("http://drawingmistakesdetection.azurewebsites.net");
+            if (MobileService?.SyncContext?.IsInitialized ?? false) { return; }
 
             const string path = "syncstore.db";
             //Setup local sqlite store and initialize table
@@ -27,20 +26,20 @@ namespace Drawing_Mistakes_Detection
             store.DefineTable<DrawingWithTag>();
             await MobileService.SyncContext.InitializeAsync(store, new MobileServiceSyncHandler());
 
-            //Get sync table that will call out to azure
+            //Get sync table
             drawingswithtagsTable = MobileService.GetSyncTable<DrawingWithTag>();
-
-            Debug.WriteLine("finishedinitialization");
         }
 
         public async Task<IEnumerable> GetDrawingsWithTags()
         {
+            await Initialize();
             await SyncDrawingsWithTags();
             return await drawingswithtagsTable.OrderBy(c => c.DateUtc).ToEnumerableAsync();
         }
 
         public async Task AddDrawingWithTag(byte[] tagIds)
         {
+            await Initialize();
             //create and insert drawing with separate tags
             foreach (byte tagId in tagIds)
             {

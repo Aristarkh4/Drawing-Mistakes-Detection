@@ -8,19 +8,13 @@ namespace Drawing_Mistakes_Detection
 {
     public class DrawingWithTag
     {
-        [Newtonsoft.Json.JsonProperty("Id")]
+        [Newtonsoft.Json.JsonProperty("id")]
         public string Id { get; set; }
 
-        [Microsoft.WindowsAzure.MobileServices.Version]
-        public string AzureVersion { get; set; }
-
+        [Newtonsoft.Json.JsonProperty("DateUtc")]
         public DateTime DateUtc { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("TagId")]
         public byte TagId { get; set; }
-
-        [Newtonsoft.Json.JsonIgnore]
-        public string DateDisplay { get { return DateUtc.ToLocalTime().ToString("d"); } }
-
-        [Newtonsoft.Json.JsonIgnore]
-        public string TimeDisplay { get { return DateUtc.ToLocalTime().ToString("t"); } }
     }
 }

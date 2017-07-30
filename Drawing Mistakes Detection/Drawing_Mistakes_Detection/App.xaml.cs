@@ -20,7 +20,6 @@ namespace Drawing_Mistakes_Detection
         public App()
         {
             var dataService = new AzureDataService();
-            dataService.Initialize();
 
             // Orginising the layout:
             // MainPage -> ScrollView view -> StackLayout stack.
