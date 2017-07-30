@@ -58,7 +58,7 @@ namespace Drawing_Mistakes_Detection
 
         public async Task SyncDrawingsWithTags()
         {
-            //pull down all latest changes and then push current coffees up
+            //pull down all latest changes and then push current drawings up
             await drawingswithtagsTable.PullAsync("allDrawingsWithTags", drawingswithtagsTable.CreateQuery());
             await MobileService.SyncContext.PushAsync();
         }

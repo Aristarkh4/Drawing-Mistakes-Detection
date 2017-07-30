@@ -55,7 +55,7 @@ namespace Drawing_Mistakes_Detection
                 var historyLabel = new Label { Text = "Empty", HorizontalTextAlignment = TextAlignment.Center };
                 
                 
-                if ((pastTags != null && pastTags.GetEnumerator().Current != null))
+                if (pastTags != null)
                 {
                     historyLabel.Text = "";
                     foreach (DrawingWithTag drawingTag in pastTags)
