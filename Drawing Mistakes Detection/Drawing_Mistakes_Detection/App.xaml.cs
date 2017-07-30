@@ -8,13 +8,20 @@ using System.Diagnostics;
 
 using Xamarin.Forms;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Drawing_Mistakes_Detection
 {
     public partial class App : Application
     {
+        static Dictionary<string, byte> TagNameToTagId = InitializeTagNameToTagId();
+        static Dictionary<byte, string> TagIdToTagName = InitializeTagIdToTagName();
+
         public App()
-        {   
+        {
+            var dataService = new AzureDataService();
+            dataService.Initialize();
+
             // Orginising the layout:
             // MainPage -> ScrollView view -> StackLayout stack.
             var stack = new StackLayout();
@@ -25,7 +32,7 @@ namespace Drawing_Mistakes_Detection
             Button pickPictureButton = new Button
             {
                 Text = "Pick Drawing",
-                VerticalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.CenterAndExpand
             };
             stack.Children.Add(pickPictureButton);
@@ -66,12 +73,43 @@ namespace Drawing_Mistakes_Detection
                             }
                         }
                         stack.Children.Add(predictionLabel);
+
+                        //Create a button for accessing past tags for images
+                        Button addToHistoryButton = new Button
+                        {
+                            Text = "Add Tags To History",
+                            VerticalOptions = LayoutOptions.Center,
+                            HorizontalOptions = LayoutOptions.CenterAndExpand
+                        };
+                        stack.Children.Add(addToHistoryButton);
+                        addToHistoryButton.Clicked += async (sender_, e_) =>
+                        {
+                            byte[] tagIds = new byte[bestPredictionTags.Length];
+                            for(int i = 0; i<tagIds.Length; i++)
+                            {
+                                string tag = bestPredictionTags[i];
+                                if (TagNameToTagId.ContainsKey(tag))
+                                {
+                                    tagIds[i] = TagNameToTagId[tag];   
+                                }
+                            }
+                            await dataService.AddDrawingWithTag(tagIds);
+                        };
                     }    
                 }
 
                 // Add the button to the content stack, so can select other image.
                 stack.Children.Add(pickPictureButton);
             };
+
+            //Create a button for accessing past tags for images
+            Button showHistoryButton = new Button
+            {
+                Text = "Show History",
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.CenterAndExpand
+            };
+            stack.Children.Add(showHistoryButton);
         }
 
         protected override void OnStart()
@@ -132,6 +170,34 @@ namespace Drawing_Mistakes_Detection
             {
                 return null;
             }
+        }
+
+        private static Dictionary<string, byte> InitializeTagNameToTagId()
+        {
+            var dict = new Dictionary<string, byte>();
+            dict.Add("Bad anatomy", 1);
+            dict.Add("Bad anatomy (humans)", 2);
+            dict.Add("Bad perspective", 3);
+            dict.Add("Dirty colors", 4);
+            dict.Add("Relatively good", 5);
+            dict.Add("Shaky lines", 6);
+            dict.Add("Slopy shading", 7);
+            dict.Add("Unclear", 8);
+            return dict;
+        }
+
+        private static Dictionary<byte, string> InitializeTagIdToTagName()
+        {
+            var dict = new Dictionary<byte, string>();
+            dict.Add(1, "Bad anatomy");
+            dict.Add(2, "Bad anatomy (humans)");
+            dict.Add(3, "Bad perspective");
+            dict.Add(4, "Dirty colors");
+            dict.Add(5, "Relatively good");
+            dict.Add(6, "Shaky lines");
+            dict.Add(7, "Slopy shading");
+            dict.Add(8, "Unclear");
+            return dict;
         }
     }
 }
